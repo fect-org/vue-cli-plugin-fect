@@ -8,3 +8,8 @@ cd test-app
 npm install -D {path}/vue-cli-plugin-fect
 vue invoke vue-cli-plugin-fect
 ```
+
+## TODO
+
+- [x] 自动引入`@fect-ui/vue`
+- [ ] 自动引入`@fect-ui/vue-icons`
