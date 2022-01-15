@@ -1,0 +1,17 @@
+{
+  "name": "vue-cli-plugin-fect",
+  "version": "1.0.0",
+  "description": "vue-cli plugin to add fect-ui",
+  "keywords": [
+    "fect",
+    "fect-ui",
+    "vue",
+    "vue-cli",
+    "plugin",
+    "cli"
+  ],
+  "main": "index.js",
+  "repository": "https://github.com/fect-org/vue-cli-plugin-fect.git",
+  "author": "qiyuor2 <mengyu6498@icloud.com>",
+  "license": "MIT"
+}
