@@ -13,5 +13,8 @@
   "main": "index.js",
   "repository": "https://github.com/fect-org/vue-cli-plugin-fect.git",
   "author": "qiyuor2 <mengyu6498@icloud.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "latest-version": "5.1.0"
+  }
 }
