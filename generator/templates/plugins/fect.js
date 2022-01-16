@@ -15,7 +15,7 @@ import { Button } from '@fect-ui/vue'
  */
 export default function createFect(app) {
 // https://vue-rc.miaya.art/zh-cn/guide/quickstart
-<%_ if (options.import === 'full') { _%>
+<%_ if (options.importType === 'full') { _%>
   app.use(FectUI);
 <%_ } else { _%>
 <%_ if (options.partialImportType === 'manual') { _%>
