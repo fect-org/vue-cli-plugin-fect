@@ -18,8 +18,8 @@ module.exports = [
       { name: 'Babel', value: 'babel' },
     ],
     when: ({ importType }) => {
-      return importType === 'partial';
+      return importType === 'partial'
     },
     default: 'manual',
   },
-];
+]
