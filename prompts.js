@@ -22,4 +22,10 @@ module.exports = [
     },
     default: 'manual',
   },
+  {
+    type: 'confirm',
+    name: 'useFectIcon',
+    message: 'Whether to install fect-icon as a dependency',
+    default: false,
+  },
 ]
