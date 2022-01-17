@@ -1,11 +1,11 @@
-import '@fect-ui/themes'
 <%_ if (options.importType === 'full') { _%>
 import '@fect-ui/vue/lib/main.css';
 
 import FectUI from '@fect-ui/vue';
 <%_ } else { _%>
+import '@fect-ui/themes';
 <%_ if (options.partialImportType === 'manual') { _%>
-  import '@fect-ui/vue/lib/button/style/index'
+import '@fect-ui/vue/es/button/style/index';
 
 import { Button } from '@fect-ui/vue'
 <%_ }} _%>

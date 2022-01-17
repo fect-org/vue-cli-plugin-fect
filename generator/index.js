@@ -11,15 +11,8 @@ module.exports = async (api, opts, rootOptions) => {
 
   // Babel 按需引入
   if (opts.partialImportType === 'babel') {
-    if (options.useFectIcon) {
-      api.render({
-        './babel.config.js': './templates/babel-icon.js',
-        './src/App.vue': './templates/App.vue',
-      })
-      return
-    }
     api.render({
-      './babel.config.js': './templates/babel.config.js',
+      './babel.config.js': opts.useFectIcon ? './templates/babel-icon.js' : './templates/babel.config.js',
       './src/App.vue': './templates/App.vue',
     })
     return
@@ -28,7 +21,7 @@ module.exports = async (api, opts, rootOptions) => {
   // to do for icon plugin.
   // const inejctImportIcon = opts.useFectIcon ? `import FectIcon from '@fect-ui/vue-icons'` : ''
 
-  // api.injectImports(api.entryFile, `import createFect from './plugins/fect'`)
+  api.injectImports(api.entryFile, `import createFect from './plugins/fect'`)
 
   api.render({
     './src/plugins/fect.js': './templates/plugins/fect.js',
