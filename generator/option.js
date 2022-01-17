@@ -29,22 +29,20 @@ class Options {
   }
 
   async setDependcyVersion() {
-    for (const [prop] of this.dependencies) {
-      this.dependencies.set(prop, await resolvePkgVersion(prop))
+    const reSetter = (meta) => {
+      for (const [prop] of meta) {
+        meta.set(prop, resolvePkgVersion(prop))
+      }
     }
-    for (const [prop] of this.devDependencies) {
-      this.devDependencies.set(prop, await resolvePkgVersion(prop))
-    }
+    await Promise.all([reSetter(this.dependencies), reSetter(this.devDependencies)])
   }
 
   extendDependcy() {
-    const devDependencies = {}
-    const dependencies = {}
-    Object.assign(devDependencies, Object.fromEntries(this.devDependencies))
-    Object.assign(dependencies, Object.fromEntries(this.dependencies))
+    const reAssign = (draft) => Object.assign({}, Object.fromEntries(draft))
+
     return {
-      devDependencies,
-      dependencies,
+      devDependencies: reAssign(this.devDependencies),
+      dependencies: reAssign(this.dependencies),
     }
   }
 }
