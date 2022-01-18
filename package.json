@@ -15,7 +15,8 @@
   "author": "qiyuor2 <mengyu6498@icloud.com>",
   "license": "MIT",
   "dependencies": {
-    "latest-version": "5.1.0"
+    "latest-version": "5.1.0",
+    "parse-imports":"0.0.5"
   },
   "devDependencies": {
     "prettier": "^2.5.1"

@@ -63,6 +63,11 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
+es-module-lexer@0.3.26:
+  version "0.3.26"
+  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-0.3.26.tgz#7b507044e97d5b03b01d4392c74ffeb9c177a83b"
+  integrity sha512-Va0Q/xqtrss45hWzP8CZJwzGSZJjDM5/MJRE3IXXnUCcVLElR9BRaE9F62BopysASyc4nM3uwhSW7FFB9nlWAA==
+
 get-stream@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
@@ -170,6 +175,14 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
+parse-imports@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/parse-imports/-/parse-imports-0.0.5.tgz#80e505b9558d6fa8d760b9f0be64f42f65bf4d17"
+  integrity sha512-yA6mDNotJmyAXcEdi2AjiHfI8Llk+/uv/jgBgvzFVP8iGaHC5L3rR6VQk/1qEE3SvLUsDQ2GdQMfPTi0qrmt8Q==
+  dependencies:
+    es-module-lexer "0.3.26"
+    slashes "2.0.2"
+
 prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
@@ -223,6 +236,11 @@ semver@^6.2.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+slashes@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/slashes/-/slashes-2.0.2.tgz#c149dd3555bd236fdc3b43ec56e748e924425613"
+  integrity sha512-68p+QkFAQQRetIUzNXAdktNJr8AYLxJukjBegYQz8F7VATsBJG621UYtY/vS2j9jerxdJ1k6Tc25K4DXEw1d5w==
 
 strip-json-comments@~2.0.1:
   version "2.0.1"

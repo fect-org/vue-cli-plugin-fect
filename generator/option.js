@@ -29,9 +29,9 @@ class Options {
   }
 
   async setDependcyVersion() {
-    const reSetter = (meta) => {
+    const reSetter = async (meta) => {
       for (const [prop] of meta) {
-        meta.set(prop, resolvePkgVersion(prop))
+        meta.set(prop, await resolvePkgVersion(prop))
       }
     }
     await Promise.all([reSetter(this.dependencies), reSetter(this.devDependencies)])
