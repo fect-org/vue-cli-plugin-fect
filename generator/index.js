@@ -9,49 +9,13 @@ module.exports = async (api, opts, rootOptions) => {
 
   api.extendPackage({ dependencies, devDependencies })
 
-  const injectPartialTheme = () => api.injectImports(api.entryFile, '@fect-ui/themes;')
-
   // Babel 按需引入
+  const renders = { './src/App.vue': './templates/App.vue', './src/main.js': './templates/entry.js' }
+
   if (opts.partialImportType === 'babel') {
-    injectPartialTheme()
-    api.render({
-      './babel.config.js': opts.useFectIcon ? './templates/babel-icon.js' : './templates/babel.config.js',
-      './src/App.vue': './templates/App.vue',
-    })
-  } else {
-    if (opts.importType === 'full') {
-      if (opts.useFectIcon) {
-        api.injectImports(api.entryFile, `import FectUI from '@fect-ui/vue';import FectIcon from '@fect-ui/vue-icons';`)
-      } else {
-        api.injectImports(api.entryFile, `import @fect-ui/vue/lib/main.css;`)
-        api.injectImports(api.entryFile, `import FectUI from '@fect-ui/vue';`)
-      }
-    }
-
-    if (opts.partialImportType === 'Manual' && !opts.useFectIcon) {
-      api.injectImports(
-        api.entryFile,
-        `
-        ${injectPartialTheme()}
-        import { Button } from '@fect-ui/vue';
-        import '@fect-ui/vue/es/button/style/index';`
-      )
-    }
-
-    if (opts.partialImportType === 'Manual' && opts.useFectIcon) {
-      api.injectImports(
-        api.entryFile,
-        `
-        ${injectPartialTheme()}
-        import { Button } from '@fect-ui/vue';
-        import '@fect-ui/vue/es/button/style/index';
-        import { Github } from '@fect-ui/vue-icons';`
-      )
-    }
-    api.render({
-      './src/App.vue': './templates/App.vue',
-    })
+    renders['./babel.config.js'] = opts.useFectIcon ? './templates/babel-icon.js' : './templates/babel.config.js'
   }
+  api.render(renders)
 
   api.afterInvoke(async () => {
     const { EOL } = require('os')
@@ -63,10 +27,19 @@ module.exports = async (api, opts, rootOptions) => {
     })
     const imports = [...(await parser(contentMain))]
     let ipt = []
-    imports.forEach((_) => {
-      if (!_.importClause.default) return
-      if (_.importClause.default.includes('Fect')) ipt.push(_.importClause.default)
-    })
+    if (opts.partialImportType === 'manual') {
+      imports.forEach((_) => {
+        if (_.moduleSpecifier.code.includes('fect') && _.importClause.named.length) {
+          ipt.push(_.importClause.named[0].specifier)
+        }
+      })
+    } else {
+      imports.forEach((_) => {
+        if (!_.importClause.default) return
+        if (_.importClause.default.includes('Fect')) ipt.push(_.importClause.default)
+      })
+    }
+
     const lines = contentMain.split(/\r?\n/g)
     const renderIndex = lines.findIndex((line) => line.match(/createApp\(App\)(\.use\(\w*\))*\.mount\('#app'\)/))
     const renderContent = lines[renderIndex]

@@ -12,4 +12,4 @@ vue invoke vue-cli-plugin-fect
 ## TODO
 
 - [x] 自动引入`@fect-ui/vue`
-- [ ] 自动引入`@fect-ui/vue-icons`
+- [x] 自动引入`@fect-ui/vue-icons`
